@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Você, Meu Amor ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Corações flutuantes */
+        .floating-hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 105, 180, 0.7);
+            font-size: 20px;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 50px;
+            animation: fadeInDown 2s ease-out;
+        }
+
+        .title {
+            font-size: 3.5em;
+            color: #8b1538;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #d63384;
+            font-style: italic;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 2s ease-out 0.5s both;
+        }
+
+        .love-message {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #6b2c49;
+            margin-bottom: 30px;
+        }
+
+        .photo-frame {
+            width: 250px;
+            height: 250px;
+            border: 8px solid #ff69b4;
+            border-radius: 50%;
+            margin: 30px auto;
+            background: linear-gradient(45deg, #ffd1dc, #ffb6c1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1em;
+            color: #8b1538;
+            font-style: italic;
+            animation: rotate 10s linear infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .reasons {
+            text-align: left;
+            margin: 30px 0;
+        }
+
+        .reason {
+            background: linear-gradient(90deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 15px 25px;
+            margin: 10px 0;
+            border-radius: 25px;
+            animation: slideInLeft 1s ease-out;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
+        }
+
+        .reason:nth-child(even) {
+            animation: slideInRight 1s ease-out;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        .counter-section {
+            background: linear-gradient(135deg, #ff69b4, #ff1493);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+            animation: fadeInUp 2s ease-out 1s both;
+        }
+
+        .counter-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .counter-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .counter-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .counter-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            animation: countUp 2s ease-out;
+        }
+
+        .counter-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        @keyframes countUp {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 1.1em;
+            color: #8b1538;
+            animation: fadeIn 3s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .title { font-size: 2.5em; }
+            .main-content { padding: 20px; }
+            .photo-frame { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">❤️ Para Momoin ❤️</h1>
+            <p class="subtitle">Iasmim, meu amor, minha vida, meu tudo...</p>
+        </div>
+
+        <div class="main-content">
+            <div class="love-message">
+                <p>Desde que você chegou na minha vida, cada dia se tornou mais especial. Você é a razão do meu sorriso, a luz que ilumina meus dias e o amor que aquece meu coração. ✨</p>
+            </div>
+
+            <div class="photo-frame" onclick="changeMessage()">
+                <p>📸 Clique aqui para<br>uma surpresa especial<br>para minha Momoin!</p>
+            </div>
+
+            <div class="reasons">
+                <div class="reason">💕 Porque seu sorriso ilumina meu dia</div>
+                <div class="reason">🌟 Porque você me faz querer ser uma pessoa melhor</div>
+                <div class="reason">🦋 Porque ao seu lado me sinto completo(a)</div>
+                <div class="reason">🌹 Porque você é minha flor mais bonita</div>
+                <div class="reason">💖 Porque te amo mais a cada dia que passa</div>
+            </div>
+
+            <button class="button" onclick="showSurprise()">💌 Mensagem Especial</button>
+            <button class="button" onclick="playMusic()">🎵 Nossa Música</button>
+        </div>
+
+        <div class="counter-section">
+            <div class="counter-title">💕 Nosso Tempo Juntos 💕</div>
+            <p>Desde 27 de dezembro de 2024...</p>
+            <div class="counter-display">
+                <div class="counter-item">
+                    <span class="counter-number" id="days">0</span>
+                    <div class="counter-label">Dias</div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="hours">0</span>
+                    <div class="counter-label">Horas</div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="minutes">0</span>
+                    <div class="counter-label">Minutos</div>
+                </div>
+                <div class="counter-item">
+                    <span class="counter-number" id="seconds">0</span>
+                    <div class="counter-label">Segundos</div>
+                </div>
+            </div>
+            <p style="font-style: italic; opacity: 0.9;">E cada segundo foi especial! ✨</p>
+        </div>
+
+        <div class="footer">
+            <p>Te amo hoje, amanhã e para sempre... 💕</p>
+            <p><strong>Com amor, Mô</strong></p>
+        </div>
+    </div>
+
+    <script>
+        // Criar corações flutuantes
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.querySelector('.floating-hearts').appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+
+        // Contador de tempo juntos
+        function updateCounter() {
+            const startDate = new Date('2024-12-27T00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // Atualizar contador a cada segundo
+        setInterval(updateCounter, 1000);
+        updateCounter(); // Chamada inicial
+
+        // Criar corações a cada 2 segundos
+        setInterval(createHeart, 2000);
+
+        // Mensagens especiais
+        const messages = [
+            "Momoin, você é o amor da minha vida! 💕",
+            "Iasmim, cada momento com você é mágico! ✨",
+            "Meu coração bate mais forte por você, Momoin! 💓",
+            "Você é minha pessoa favorita no mundo, Iasmim! 🌍",
+            "Te amo infinitamente, minha Momoin! ♾️❤️"
+        ];
+
+        let messageIndex = 0;
+
+        function changeMessage() {
+            const frame = document.querySelector('.photo-frame');
+            frame.innerHTML = `<p style="animation: pulse 1s ease-in-out;">${messages[messageIndex]}</p>`;
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+
+        function showSurprise() {
+            alert("💖 Momoin, você é a pessoa mais especial do mundo pra mim! Obrigado por existir e fazer minha vida tão feliz! Te amo muito, Iasmim! 💖");
+        }
+
+        function playMusic() {
+            window.open('https://open.spotify.com/intl-pt/track/0otRX6Z89qKkHkQ9OqJpKt?si=3694a9e6c1ea43dd', '_blank');
+        }
+
+        // Efeito de digitação no título
+        const title = document.querySelector('.title');
+        const originalText = title.innerHTML;
+        title.innerHTML = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < originalText.length) {
+                title.innerHTML += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 200);
+            }
+        }
+
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
